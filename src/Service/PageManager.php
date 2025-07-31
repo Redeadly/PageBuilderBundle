@@ -11,10 +11,10 @@
 
 namespace ACSEO\PageBuilderBundle\Service;
 
-use Symfony\Component\HttpFoundation\Request;
-use ACSEO\PageBuilderBundle\Entity\PageInterface;
 use ACSEO\PageBuilderBundle\Entity\Page;
+use ACSEO\PageBuilderBundle\Entity\PageInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class PageManager extends AbstractPageManager
 {
@@ -25,9 +25,10 @@ class PageManager extends AbstractPageManager
         $this->pageRepository = $em->getRepository(Page::class);
     }
 
-    public function loadPage(Request $request) : PageInterface
+    public function loadPage(Request $request): PageInterface
     {
         $uri = $request->query->get('uri', false);
+
         return $this->pageRepository->findOneByUri($uri);
     }
 

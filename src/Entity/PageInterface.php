@@ -11,13 +11,6 @@
 
 namespace ACSEO\PageBuilderBundle\Entity;
 
-use ACSEO\PageBuilderBundle\Repository\PageRepository;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Messenger\Exception\ValidationFailedException;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Validation;
-
 interface PageInterface
 {
     /**
@@ -26,20 +19,18 @@ interface PageInterface
      * @return void
      */
     public static function validateFromArray(array $data);
-    
+
     /**
      * DTO Method to create Page instance from an array of data.
-     *
-     * @return PageInterface
      */
-    public static function createFromArray(array $data) : PageInterface;
-    
+    public static function createFromArray(array $data): self;
+
     /**
      * Update Page Instance from an array of data.
      *
      * @return Page
      */
-    public function updateFromArray(array $data): PageInterface;
+    public function updateFromArray(array $data): self;
 
     public function getData(): ?array;
 }

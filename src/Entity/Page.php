@@ -56,7 +56,7 @@ class Page implements PageInterface
             'uri' => new Assert\NotBlank(),
             'html' => new Assert\NotBlank(),
             'css' => new Assert\NotBlank(),
-            'data' => new Assert\NotNull()
+            'data' => new Assert\NotNull(),
         ]);
 
         $violations = $validator->validate($data, $constraint);
@@ -70,7 +70,7 @@ class Page implements PageInterface
      *
      * @return Page
      */
-    public static function createFromArray(array $data) : PageInterface
+    public static function createFromArray(array $data): PageInterface
     {
         self::validateFromArray($data);
         $page = new self();
@@ -88,7 +88,7 @@ class Page implements PageInterface
      *
      * @return Page
      */
-    public function updateFromArray(array $data) : PageInterface
+    public function updateFromArray(array $data): PageInterface
     {
         self::validateFromArray($data);
         $this->uri = $data['uri'];

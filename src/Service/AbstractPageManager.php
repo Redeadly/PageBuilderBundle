@@ -11,9 +11,9 @@
 
 namespace ACSEO\PageBuilderBundle\Service;
 
+use ACSEO\PageBuilderBundle\Entity\PageInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use ACSEO\PageBuilderBundle\Entity\PageInterface;
 
 abstract class AbstractPageManager
 {
@@ -27,6 +27,7 @@ abstract class AbstractPageManager
         return new JsonResponse();
     }
 
-    abstract public function loadPage(Request $request) : PageInterface;
+    abstract public function loadPage(Request $request): PageInterface;
+
     abstract public function save(array $data): PageInterface;
 }

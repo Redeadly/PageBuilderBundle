@@ -12,9 +12,9 @@
 namespace ACSEO\PageBuilderBundle\Twig;
 
 use Symfony\Bridge\Twig\Extension\HttpKernelRuntime;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent('PageRender', template: '@PageBuilder/components/pagerender.html.twig')]
 class PageRender
@@ -23,9 +23,8 @@ class PageRender
 
     public function __construct(
         private HttpKernelRuntime $httpKernelRuntime,
-        private RouterInterface $router        
-        )
-    {
+        private RouterInterface $router,
+    ) {
     }
 
     public function mount(string $html)
@@ -35,22 +34,23 @@ class PageRender
 
     /**
      * This method will replace all dom blocks with attribute  render="route_name"
-     * By rendering the fragment and replacing it in the generated html
+     * By rendering the fragment and replacing it in the generated html.
      *
      * @param [type] $html
+     *
      * @return string $html with rendered blocks
      */
-    private function manageBlocksWithRenderAttribute($html) : string
+    private function manageBlocksWithRenderAttribute($html): string
     {
         $crawler = new Crawler($html);
         $filteredDivs = $crawler->filter('div[render]');
-        
+
         foreach ($filteredDivs as $node) {
             $htmlSource = $node->ownerDocument->saveHTML($node);
             $arguments = [];
             $routeName = false;
             foreach ($node->attributes as $attribute) {
-                if ($attribute->name == 'render') {
+                if ('render' === $attribute->name) {
                     $routeName = $attribute->value;
                 } else {
                     $arguments[$attribute->name] = $attribute->value;

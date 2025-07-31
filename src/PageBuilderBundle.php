@@ -33,7 +33,7 @@ class PageBuilderBundle extends AbstractBundle
         $definition->rootNode()
             ->children()
                 ->arrayNode('grapesjs')
-                    ->treatNullLike(array())
+                    ->treatNullLike([])
                     ->children()
                         ->arrayNode('js')
                             ->beforeNormalization()
@@ -120,14 +120,13 @@ class PageBuilderBundle extends AbstractBundle
             ->setArgument('$httpKernelRuntime', new Reference('twig.runtime.httpkernel'))
             ->setArgument('$router', new Reference('router'))
             ->setAutoconfigured(true)
-            ;
+        ;
 
         $builder->register(PageRepository::class)
             ->setArgument('$registry', new Reference('doctrine'))
             ->setAutoconfigured(true);
 
-        if (!$builder->hasAlias('acseo.page_builder.page_manager'))
-        {
+        if (!$builder->hasAlias('acseo.page_builder.page_manager')) {
             $builder->register(PageManager::class)
                 ->setArgument('$em', new Reference('doctrine.orm.entity_manager'))
                 ->setAutoconfigured(true);

@@ -40,7 +40,7 @@ class PageBuilder
         return $resolver->resolve($data);
     }
 
-    public function mount(string $idField, string $id = null)
+    public function mount(string $idField, ?string $id = null)
     {
         if (!$id) {
             $this->id = uniqid('acseo_pagebuilder');

@@ -90,24 +90,23 @@ acseo_page_builder:
   # Declare your custom Blocks
   #
   blocks:
-blocks:
-      latest-articles:
-        label: 'Latest articles'
-        category: 'Extra blocks'
-        media: '<svg viewBox="0 0 24 24"></svg>'
-        content:
-          attributes:
-            'render': 'latest_articles'
-          traits:
-            - label: 'Number of articles'
-              name: 'articles'
-              type: 'text'
-              value: '5'
-            - label: 'Number of columns'
-              name: 'columns'
-              type: 'text'
-              value: '2'
-          content: '<div class="block">Latest articles. This block will be replaced by latest articles</div>'
+    latest-articles:
+      label: 'Latest articles'
+      category: 'Extra blocks'
+      media: '<svg viewBox="0 0 24 24"></svg>'
+      content:
+        attributes:
+          'render': 'latest_articles'
+        traits:
+          - label: 'Number of articles'
+            name: 'articles'
+            type: 'text'
+            value: '5'
+          - label: 'Number of columns'
+            name: 'columns'
+            type: 'text'
+            value: '2'
+        content: '<div class="block">Latest articles. This block will be replaced by latest articles</div>'
 ```
 
 ## Dynamic block rendering

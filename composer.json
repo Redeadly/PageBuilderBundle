@@ -18,7 +18,7 @@
         "symfony/validator": "^7",
         "symfony/ux-live-component": "^2.25",
         "doctrine/doctrine-bundle": "^2.11",
-        "doctrine/orm": "^3.5"
+        "doctrine/orm": "^3"
     },
     "require-dev": {
         "symfony/test-pack": "1.2.*",
